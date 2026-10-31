@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Horse Jelly Secret</title>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1560338545434023');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1560338545434023&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- vTurb: otimização de carregamento -->
+  <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+  <link rel="preload" href="https://scripts.converteai.net/20a070d6-dd0d-4397-aab3-ecc0fb3a86c2/ab-test/6a45ed825128ca6609397206/player.js" as="script">
+  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+  <link rel="dns-prefetch" href="https://cdn.converteai.net">
+  <link rel="dns-prefetch" href="https://scripts.converteai.net">
+  <link rel="dns-prefetch" href="https://images.converteai.net">
+  <link rel="dns-prefetch" href="https://m3u8.vturb.net">
+  <link rel="dns-prefetch" href="https://license.vturb.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Roboto', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== BARRA VERMELHA DO TOPO ===== */
+    .top-bar {
+      background: #c11414;
+      color: #fff;
+      text-align: center;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 16px;
+      line-height: 1.4;
+    }
+
+    /* ===== HEADLINE ===== */
+    .headline {
+      font-family: 'Archivo', Arial, sans-serif;
+      font-weight: 800;
+      text-align: center;
+      font-size: 31px;
+      line-height: 1.5;
+      max-width: 440px;
+      margin: 32px auto 28px;
+      padding: 0 16px;
+    }
+    .headline .highlight { color: #ff8a00; }
+
+    /* ===== VSL ===== */
+    .vsl-wrapper {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 40px;
+      padding: 0 16px;
+    }
+    .vsl-box {
+      width: 100%;
+      background: #1a1a1a;
+    }
+    /* Placeholder - apague quando colar a VSL */
+    .vsl-placeholder {
+      aspect-ratio: 9 / 16;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #777;
+      font-size: 16px;
+      border: 2px dashed #444;
+      padding: 20px;
+    }
+
+    @media (max-width: 480px) {
+      .top-bar { font-size: 13px; padding: 12px 12px; }
+      .headline { font-size: 25px; margin: 24px auto 22px; }
+      .vsl-wrapper { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE ATENÇÃO (data atualiza sozinha pro dia de hoje) -->
+  <div class="top-bar">
+    Attention: This presentation is only available until <span id="today"></span>
+  </div>
+
+  <!-- HEADLINE -->
+  <h1 class="headline">
+    The <span class="highlight">Horse Jelly secret</span><br>
+    behind a rock-hard penis<br>
+    in just 9 days
+  </h1>
+
+  <!-- VSL -->
+  <div class="vsl-wrapper">
+    <div class="vsl-box">
+
+      <!-- ===== VSL (vTurb - Teste A/B) ===== -->
+      <vturb-smartplayer id="ab-6a45ed825128ca6609397206" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer>
+      <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/20a070d6-dd0d-4397-aab3-ecc0fb3a86c2/ab-test/6a45ed825128ca6609397206/player.js", s.async=!0,document.head.appendChild(s); </script>
+      <!-- ===== FIM DA VSL ===== -->
+
+    </div>
+  </div>
+
+  <script>
+    // Data de hoje no formato MM/DD/YYYY
+    (function () {
+      var d = new Date();
+      var mm = String(d.getMonth() + 1).padStart(2, '0');
+      var dd = String(d.getDate()).padStart(2, '0');
+      document.getElementById('today').textContent = mm + '/' + dd + '/' + d.getFullYear();
+    })();
+  </script>
+
+</body>
+</html>
