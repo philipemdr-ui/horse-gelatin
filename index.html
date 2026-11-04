@@ -93,10 +93,90 @@
       padding: 20px;
     }
 
+
+    /* ===== OFERTA BLACK FRIDAY ===== */
+    .bf-offer {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 48px;
+      padding: 0 16px;
+    }
+    .bf-card {
+      position: relative;
+      background: linear-gradient(180deg, #1b1b1b 0%, #0d0d0d 100%);
+      border: 2px solid #ff8a00;
+      border-radius: 16px;
+      padding: 26px 20px 22px;
+      text-align: center;
+      box-shadow: 0 0 0 4px rgba(255, 138, 0, 0.12), 0 18px 40px -18px rgba(255, 138, 0, 0.55);
+    }
+    .bf-tag {
+      display: inline-block;
+      background: #c11414;
+      color: #fff;
+      font-family: 'Archivo', Arial, sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .bf-off {
+      font-family: 'Archivo', Arial, sans-serif;
+      font-weight: 800;
+      font-size: 64px;
+      line-height: 1;
+      color: #ff8a00;
+      animation: bf-glow 2.4s ease-in-out infinite;
+    }
+    .bf-off small {
+      display: block;
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      color: #fff;
+      margin-top: 6px;
+    }
+    .bf-regular {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #9a9a9a;
+    }
+    .bf-regular s { color: #bdbdbd; font-weight: 700; text-decoration-color: #c11414; text-decoration-thickness: 2px; }
+    .bf-was { margin-top: 4px; font-family: 'Archivo', Arial, sans-serif; font-weight: 800; font-size: 46px; line-height: 1.1; }
+    .bf-was s { color: #bdbdbd; text-decoration-color: #c11414; text-decoration-thickness: 3px; }
+    .bf-label { margin-top: 22px; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffb454; font-weight: 700; }
+    .bf-price {
+      font-family: 'Archivo', Arial, sans-serif;
+      font-weight: 800;
+      font-size: 60px;
+      line-height: 1.05;
+      color: #fff;
+    }
+    .bf-save {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(255, 138, 0, 0.14);
+      color: #ffb454;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 7px 14px;
+      border-radius: 8px;
+    }
+    .bf-cta { margin-top: 22px; }
+    .bf-note { margin-top: 16px; font-size: 12.5px; line-height: 1.5; color: #8a8a8a; }
+    @keyframes bf-glow {
+      0%, 100% { text-shadow: 0 0 0 rgba(255, 138, 0, 0); }
+      50% { text-shadow: 0 0 22px rgba(255, 138, 0, 0.55); }
+    }
+    @media (prefers-reduced-motion: reduce) { .bf-off { animation: none; } }
+
     @media (max-width: 480px) {
       .top-bar { font-size: 13px; padding: 12px 12px; }
       .headline { font-size: 25px; margin: 24px auto 22px; }
       .vsl-wrapper { padding: 0; }
+      .bf-offer { padding: 0 12px; }
     }
   </style>
 </head>
@@ -124,6 +204,23 @@
 
     </div>
   </div>
+
+  <!-- ===== OFERTA BLACK FRIDAY (logo abaixo do vídeo) ===== -->
+  <section class="bf-offer" id="offer" aria-labelledby="bf-title">
+    <div class="bf-card">
+      <span class="bf-tag" id="bf-title">Black Friday Offer</span>
+      <div class="bf-off">79% OFF<small>BLACK FRIDAY DISCOUNT</small></div>
+
+      <p class="bf-regular">Regular price</p>
+      <p class="bf-was"><s>$137</s></p>
+
+      <!-- BOTÃO DE COMPRA: cole aqui o botão/link de checkout da Kash Pay deste produto -->
+      <div class="bf-cta" id="kashpay-button"></div>
+
+      <p class="bf-note">Black Friday discount already applied. Price in US dollars.</p>
+    </div>
+  </section>
+  <!-- ===== FIM DA OFERTA ===== -->
 
   <script>
     // Data de hoje no formato MM/DD/YYYY
