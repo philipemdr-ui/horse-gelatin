@@ -191,6 +191,24 @@
     footer .legal a { text-decoration: none; }
     footer .legal a:hover { text-decoration: underline; }
 
+
+    /* ===== EXIT POP-UP ===== */
+    .exit-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.82); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 9999; }
+    .exit-overlay.show { display: flex; animation: exitFade .25s ease; }
+    @keyframes exitFade { from { opacity: 0 } to { opacity: 1 } }
+    .exit-box { position: relative; width: 100%; max-width: 420px; background: #111; border: 2px solid #ff8a00; border-radius: 14px; padding: 28px 20px 22px; text-align: center; animation: exitPop .3s ease; }
+    @keyframes exitPop { from { transform: scale(.9); opacity: 0 } to { transform: none; opacity: 1 } }
+    .exit-close { position: absolute; top: 8px; right: 12px; background: none; border: 0; color: #8a8a8a; font-size: 26px; line-height: 1; cursor: pointer; padding: 4px; }
+    .exit-close:hover { color: #fff; }
+    .exit-tag { display: inline-block; background: #c11414; color: #fff; font-weight: 700; font-size: 12px; letter-spacing: .08em; padding: 5px 12px; border-radius: 20px; margin-bottom: 14px; }
+    .exit-box h2 { font-family: 'Archivo', Arial, sans-serif; font-weight: 800; font-size: 25px; line-height: 1.25; margin-bottom: 10px; }
+    .exit-box h2 .highlight { color: #ff8a00; }
+    .exit-box p { color: #d0d0d0; font-size: 15.5px; line-height: 1.5; margin-bottom: 20px; }
+    .exit-cta { display: block; width: 100%; background: #1fa83a; color: #fff; border: 0; text-decoration: none; font-family: 'Archivo', Arial, sans-serif; font-weight: 800; font-size: 18px; padding: 16px 12px; border-radius: 10px; box-shadow: 0 6px 0 #127a28; cursor: pointer; }
+    .exit-cta:active { transform: translateY(3px); box-shadow: 0 3px 0 #127a28; }
+    .exit-alt { display: inline-block; margin-top: 14px; color: #8a8a8a; font-size: 13.5px; text-decoration: underline; background: none; border: 0; cursor: pointer; }
+    .exit-alt:hover { color: #bbb; }
+
     @media (max-width: 480px) {
       .top-bar { font-size: 13px; padding: 12px 12px; }
       .headline { font-size: 24px; margin: 24px auto 14px; }
@@ -345,6 +363,67 @@
       <a href="mailto:philipe.mdr@gmail.com">Contact Us</a>
     </p>
   </footer>
+
+
+  <!-- ===== EXIT POP-UP ===== -->
+  <div class="exit-overlay" id="exitPopup" role="dialog" aria-modal="true" aria-labelledby="exitTitle">
+    <div class="exit-box">
+      <button class="exit-close" id="exitClose" aria-label="Close">&times;</button>
+      <span class="exit-tag">WAIT!</span>
+      <h2 id="exitTitle">You're about to miss the <span class="highlight">rest of the presentation</span></h2>
+      <p>The most important part of the video, including the full step-by-step, comes near the end. Stay a few more minutes and see it all.</p>
+      <button class="exit-cta" id="exitStay">▶ KEEP WATCHING</button>
+      <br>
+      <a class="exit-alt" id="exitCheckout" href="https://checkout.kashpay.com/checkout/checkout-1793425706447">I'm ready, take me to the order page</a>
+    </div>
+  </div>
+
+  <script>
+  /* Exit pop-up: aparece uma vez por sessão.
+     Desktop: quando o mouse sai pelo topo da janela.
+     Celular: quando o visitante sai da aba e volta para ela. */
+  (function(){
+    var popup = document.getElementById('exitPopup');
+    var KEY = 'hg_exit_shown';
+    var MIN_SECONDS = 10; // não mostra nos primeiros segundos
+    var start = Date.now();
+    function alreadyShown(){ try { return sessionStorage.getItem(KEY) === '1'; } catch(e){ return false; } }
+    function markShown(){ try { sessionStorage.setItem(KEY, '1'); } catch(e){} }
+    function show(){
+      if (alreadyShown() || (Date.now() - start) / 1000 < MIN_SECONDS) return;
+      markShown();
+      popup.classList.add('show');
+      try { fbq('trackCustom', 'ExitPopupShown'); } catch(e){}
+    }
+    function hide(){ popup.classList.remove('show'); }
+
+    // Mantém UTMs e demais parâmetros da URL no link do checkout
+    var link = document.getElementById('exitCheckout');
+    if (window.location.search) {
+      var url = new URL(link.href);
+      new URLSearchParams(window.location.search).forEach(function(v,k){ url.searchParams.set(k, v); });
+      link.href = url.toString();
+    }
+
+    document.addEventListener('mouseout', function(e){
+      if (!e.relatedTarget && e.clientY <= 0) show();
+    });
+    var leftAt = 0;
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden) { leftAt = Date.now(); }
+      else if (leftAt && Date.now() - leftAt > 3000) { show(); }
+    });
+
+    document.getElementById('exitClose').addEventListener('click', hide);
+    document.getElementById('exitStay').addEventListener('click', function(){
+      hide();
+      var vsl = document.querySelector('.vsl-wrapper');
+      if (vsl) vsl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    popup.addEventListener('click', function(e){ if (e.target === popup) hide(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') hide(); });
+  })();
+  </script>
 
 </body>
 </html>
